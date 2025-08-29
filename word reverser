@@ -1,0 +1,2 @@
+x= input("write your word: ")
+print(x[::-1])
