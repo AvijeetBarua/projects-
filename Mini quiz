@@ -1,0 +1,14 @@
+score=0
+x = input("What is the capital of France?")
+if x.lower()== "paris":
+   print("correct!")
+   score+=1
+y = input("What is 5 × 6?")
+if y== "30":
+   print("correct!")
+   score+=1
+z = input("What is the opposite of “hot”?")
+if z.lower()=="cold":
+    print("correct!")
+    score+=1
+print("your score is", score ,"out of 3")
