@@ -1,0 +1,8 @@
+y = input("convert from (C/F):") .lower()
+x = input("Enter the temperature:")
+if y== "c":
+    j = (float(x) * 9/5) + 32
+    print("Temperature in fahrenheit:", round(j, 2), "F")
+elif y=="f":
+    c = (float(x) -32) * 5/9
+    print("Temperature in celsius:", round(c, 2), "C")
