@@ -6,7 +6,7 @@ choose = random.choice(['rock','paper','scissors'])
 
 
 if x== choose:
-    print("It's a tie! You both chose", x)
+    print("It's a tie! You both choose", x)
 elif (x=='rock' and choose=='scissors') or (x=='paper' and choose=='rock') or (x=='scissors'and choose=='paper'):
     print("You win! You chose", x, "and the computer chose", choose)
 else:
