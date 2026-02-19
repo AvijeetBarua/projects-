@@ -1,0 +1,41 @@
+import os
+import sys
+import csv
+
+
+def main():
+    input_file = check()
+    count, replace = openfile(input_file)
+    print(f"{replace} has {count} lines")
+
+
+
+def check():
+
+    if len(sys.argv)< 2:
+        sys.exit("Too few command-line arguments")
+    if len(sys.argv)>2:
+        sys.exit("Too many command-line arguments")
+    try:
+        with open(sys.argv[1], "r") as file:
+            pass
+    except FileNotFoundError:
+        sys.exit(f"Could not read {sys.argv[1]}")
+
+    return sys.argv[1]
+
+
+def openfile(file_name1):
+    count = 0
+    with open(file_name1, "r") as file:
+        reader = csv.reader(file)
+        for row in reader:
+            count += 1
+        split = os.path.splitext(file_name1)
+        replace = split[0] + ".txt"
+
+
+    return count, replace
+
+
+main()
