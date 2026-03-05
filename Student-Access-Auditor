@@ -1,0 +1,35 @@
+import sys
+import csv
+import re
+
+
+def main():
+    input_file, output_file = check()
+    write(input_file, output_file)
+
+
+def check():
+    if len(sys.argv) <3:
+        sys.exit("Too few command-line arguments")
+    if len(sys.argv) >3:
+        sys.exit("Too many command-line arguments")
+    with open(sys.argv[1], "r") as file:
+        reader = file.read()
+        data = re.findall(r"MQ\d{8}", reader, re.MULTILINE)
+        if not data:
+            sys.exit("Invalid ID")
+        else:
+            return sys.argv[1], sys.argv[2]
+
+
+def write(filename1, filename2):
+    with open(filename1, "r") as file, open(filename2, "w") as output:
+        reader = csv.reader(file)
+        writer = csv.DictWriter(output, fieldnames=["ID", "STATUS", "NAME"])
+        writer.writeheader()
+        for row in reader:
+            checker= re.search(r".*(MQ\d{8})\s+(accessed|entered|at)\s+(.+)", row[0])
+            if checker:
+                writer.writerow({"ID": checker.group(1), "STATUS": checker.group(2), "NAME": checker.group(3)})
+            
+main()
